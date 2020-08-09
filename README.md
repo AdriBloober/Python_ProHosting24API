@@ -1,5 +1,7 @@
 # Python ProHosting24 API
 
+**This is a non-official project!**
+
 ## Install
 
 ### Install from pip
