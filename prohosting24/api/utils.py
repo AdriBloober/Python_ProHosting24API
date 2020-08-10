@@ -36,7 +36,7 @@ class ModelReference:
         self.model = model
 
     def __repr__(self):
-        return f"<{self.__class__.__name__} id={self.model_id} model={self.model}>"
+        return f"<{self.__class__.__name__} id={self.id} model={self.model}>"
 
 
 def model_target(model_class, get_model=None, getmodel_args=None):
