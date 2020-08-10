@@ -9,7 +9,7 @@ with open("requirements.txt") as f:
 
 setuptools.setup(
     name="prohosting24api",
-    version="0.1.1",
+    version="0.2",
     author="AdriBloober",
     author_email="adrianbloober@gmail.com",
     description="Communicate with the ProHosting24 internal api.",

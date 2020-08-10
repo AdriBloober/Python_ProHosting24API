@@ -1,15 +1,19 @@
 import requests
 
 from prohosting24.api.error_mangement import handle_response
+from prohosting24.api.errors import InvalidSessionID
 
 
 class BasicApi:
     """The Basic API with request handlers, authentication and api_path."""
 
-    def handle_request(self, method, function, data, headers=None, **kwargs):
+    def handle_request(self, method, function, data, authentication=True, headers=None, **kwargs):
         if headers is None:
             headers = {}
-        data["sessionid"] = self.sessionid_authentication
+        if authentication:
+            if not self.sessionid_authentication:
+                raise InvalidSessionID()
+            data["sessionid"] = self.sessionid_authentication
         headers["function"] = function
         response = requests.request(
             method.lower(), self.api_path, data=data, headers=headers, **kwargs

@@ -26,6 +26,16 @@ from prohosting24 import Api
 api = Api("You'r SessionID")
 ```
 
+### Login
+
+```python
+from prohosting24 import Api, login
+api = login("youremail@email.com", "TypeInYourPassword")
+type(api) == Api
+```
+
+If you want to save the api, you must save ``api.sessionid_authentication``.
+
 ### VServer
 
 VServer Model:
