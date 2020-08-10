@@ -18,7 +18,6 @@ def handle_response(response):
         logging.info(f"E: {j['error']}")
         get_error_by_name(j["error"])
     elif "response" not in j:
-        logging.critical(f"Unknown error occured: '{j}'")
-        raise ProHosting24Error()
+        return None
 
     return response.json()["response"]

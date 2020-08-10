@@ -26,6 +26,25 @@ from prohosting24 import Api
 api = Api("You'r SessionID")
 ```
 
+### Login
+
+```python
+from prohosting24 import Api, login
+api = login("youremail@email.com", "TypeInYourPassword")
+type(api) == Api
+```
+
+If you want to save the api, you must save ``api.sessionid_authentication``.
+
+
+### Functions with object references
+
+Functions, which begins with a ``@model_target(Model)`` are functions, which requires a object references.
+The ``ref`` argument need's a integer id of the Model (in some casese, the model will be requested) or the model.
+The Typehints will help you to see the argument types, for example ``Union[VServer, int]``.
+If the ``model_target`` has the attribute ``get_model``, the model will be requested if you hand over the integer id.
+The ``ref`` attribute has the type ``ModelReference``.
+
 ### VServer
 
 VServer Model:
@@ -60,6 +79,18 @@ class VServer(ProHosting24Model):
 ```python
 vserver = api.get_vserver(id_of_vserver)
 type(vserver) == VServer
+```
+
+#### Start/Stop/Shutdown a VServer
+
+```python
+from time import sleep
+vserver = api.get_vserver(id_of_vserver)
+api.shutdown_server(vserver)
+sleep(10)
+api.start_server(vserver)
+sleep(10)
+api.stop_server(vserver) # stop means hard stop (not shutdown)
 ```
 
 ### Support system
